@@ -1,0 +1,14 @@
+
+<div mat-dialog-actions style="flex-flow: row-reverse;">
+        <button class="close" (click)="onNoClick()">X</button>
+</div>
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+        <div style="text-align: center">
+                <iframe [src]="data.animal | safe" allowfullscreen="allowfullscreen"
+                mozallowfullscreen="mozallowfullscreen" 
+                msallowfullscreen="msallowfullscreen" 
+                oallowfullscreen="oallowfullscreen" 
+                webkitallowfullscreen="webkitallowfullscreen"></iframe>
+        </div>
+</div>

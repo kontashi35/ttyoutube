@@ -1,0 +1,23 @@
+// mat-grid-tile {
+//     background-color: grey;
+//   }
+.mat-tab-label-content {
+    min-width: 25px !important;
+    padding: 5px;
+    color: red;
+    font-weight: 700;
+}
+mat-grid-list{
+margin-bottom: 100px
+  }
+  ::ng-deep .mat-tab-list .mat-tab-label-content{
+    color: white;
+  }
+  .label-color{
+    color: white    ;
+  }
+  ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: white;
+  }
+  
+ 
