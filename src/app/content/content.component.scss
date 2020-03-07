@@ -7,8 +7,8 @@
     color: red;
     font-weight: 700;
 }
-mat-grid-list{
-margin-bottom: 100px
+::ng-deep .mat-grid-list{
+margin-bottom: 80px
   }
   ::ng-deep .mat-tab-list .mat-tab-label-content{
     color: white;
@@ -19,5 +19,8 @@ margin-bottom: 100px
   ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
     color: white;
   }
+  .backgroundColor{
+    background: #1C2331
+}
   
  

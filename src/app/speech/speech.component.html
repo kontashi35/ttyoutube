@@ -1,29 +1,32 @@
 <div class="container">
-    <form [formGroup]="searchForm">
-      <mat-form-field>
-        <input formControlName="search" id="search" matInput placeholder="Search YouTube">
-      </mat-form-field>
-    </form>
-  </div>
-  <mat-grid-list cols="3"  gutterSize="10px">
-      <mat-grid-tile *ngFor="let result of results | async">
-          <div class="cards">
-             <mat-card style="width: 420px;height:320px;">
-              <div style="height: 64px;">
-                  <a [href]="'https://www.youtube.com/watch?v=' + result.id.videoId" target="_blank">
-                    <span style="font-size: 20px">{{result.snippet.title | limitTo: 55}}</span>
-                  </a>
-              </div>
-              <div style="text-align: center">
-                  <img [src]="result.snippet.thumbnails.default.url" style="width: 100%; max-width: 250px;" (click)="onClick(result.snippet.title, result.id.videoId)"/>
+  <form [formGroup]="searchForm">
+    <mat-form-field>
+      <input formControlName="search" id="search" matInput placeholder="Search Speech">
+    </mat-form-field>
+  </form>
+</div>
+<mat-grid-list cols="3"  gutterSize="10px">
+    <mat-grid-tile *ngFor="let result of results | async">
+        <div class="cards">
+           <mat-card style="width: 420px;height:430px;">
+            
+            <div style="text-align: center">
+                <img [src]="result.snippet.thumbnails.high.url" style="width: 100%; max-width: 420px;" (click)="onClick(result.snippet.title, result.id.videoId)"/>
 
-               </div>
-               <div style="height: 48px;">
-                  <p>{{result.snippet.description | limitTo: 55}}</p>
+             </div>
+             <mat-divider></mat-divider>
+             <div style="height: 64px;">
+                <a [href]="'https://www.youtube.com/watch?v=' + result.id.videoId" target="_blank">
+                  <span style="font-size: 20px">{{result.snippet.title | limitTo: 55}}</span>
+                </a>
+            </div>
+            <mat-divider></mat-divider>
+             <div style="height: 48px;  padding-top: 5px;">
+                <p>{{result.snippet.description | limitTo: 55}}</p>
 
-               </div>
-               
-             </mat-card>
-           </div> 
-      </mat-grid-tile>
-    </mat-grid-list> 
+             </div>
+             
+           </mat-card>
+         </div> 
+    </mat-grid-tile>
+  </mat-grid-list> 

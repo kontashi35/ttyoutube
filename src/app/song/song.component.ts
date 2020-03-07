@@ -6,6 +6,7 @@ import { distinctUntilChanged ,debounceTime,switchMap,map} from 'rxjs/operators'
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { API_URL, API_KEY } from 'src/Constant';
+import { YoutubeService } from '../youtube.service';
 @Component({
   selector: 'app-song',
   templateUrl: './song.component.html',
@@ -16,7 +17,7 @@ export class SongComponent implements OnInit {
   searchForm: FormGroup;
   results: Observable<{}>;
 
-  constructor(private formBuilder: FormBuilder, private http: Http, public dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder, private http: Http, public dialog: MatDialog,private  youtubeService: YoutubeService) {
     this.searchForm = this.formBuilder.group({
       search: ['', Validators.required],
     });
@@ -44,6 +45,15 @@ export class SongComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.results = this.searchForm.controls.search.valueChanges.pipe(
+      debounceTime(300), 
+      switchMap(searchTerm =>
+        this.http.get(
+          `${API_URL}?q=${searchTerm} tibetan song&key=${API_KEY}&maxResults=29&part=snippet&type=video`
+        )
+      ),
+      map(res => res.json().items)
+    );
   }
 
 }
