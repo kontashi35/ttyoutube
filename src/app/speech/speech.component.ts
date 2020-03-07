@@ -5,8 +5,7 @@ import { distinctUntilChanged ,debounceTime,switchMap,map} from 'rxjs/operators'
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { PlayVideoComponent } from '../play-video/play-video.component';
-const API_URL = 'https://www.googleapis.com/youtube/v3/search';
-const API_KEY = 'AIzaSyCSVSuprlmGkoO5swweCErlHTXIV2z4eng';
+import { API_URL, API_KEY } from 'src/Constant';
 
 @Component({
   selector: 'app-speech',
@@ -17,7 +16,6 @@ export class SpeechComponent implements OnInit {
 
   searchForm: FormGroup;
   results: Observable<{}>;
-  test = "thid fjdsiojfdsfjdsafauf asdiufsdnafusdaf fndsafunsdaufd sdfmsdaiofumdsf"
 
   constructor(private formBuilder: FormBuilder, private http: Http, public dialog: MatDialog) {
     this.searchForm = this.formBuilder.group({
