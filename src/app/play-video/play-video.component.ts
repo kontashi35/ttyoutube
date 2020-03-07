@@ -24,9 +24,25 @@ export class PlayVideoComponent implements OnInit,OnDestroy {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  onResize(event) {
+    var iFrame = document.getElementById( 'iFrame1' );
+      this.resizeIFrameToFitContent( iFrame );
+      
+
+  }
+  
 
 
   ngOnInit(): void {
+
   }
+   resizeIFrameToFitContent( iFrame ) {
+     console.log("resizing");
+     
+
+    iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+    iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+}
+  
 
 }

@@ -1,14 +1,25 @@
 
-<div mat-dialog-actions style="flex-flow: row-reverse;">
-        <button class="close" (click)="onNoClick()">X</button>
-</div>
+<div mat-dialog-title class="close">
+        <button mat-icon-button (click)="onNoClick()" tabindex="-1">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
 <h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-        <div style="text-align: center">
-                <iframe [src]="data.animal | safe" allowfullscreen="allowfullscreen"
+<div mat-dialog-content (window:resize)="onResize($event)">
+        <div style="text-align: center;">
+                <!-- <iframe [src]="data.animal | safe" allowfullscreen="allowfullscreen" width="600" height="400"
                 mozallowfullscreen="mozallowfullscreen" 
                 msallowfullscreen="msallowfullscreen" 
                 oallowfullscreen="oallowfullscreen" 
-                webkitallowfullscreen="webkitallowfullscreen"></iframe>
+                webkitallowfullscreen="webkitallowfullscreen" frameborder="0" id="iFrame1"></iframe> -->
+                <iframe [src]="data.animal | safe"
+                allowfullscreen="allowfullscreen"
+        mozallowfullscreen="mozallowfullscreen" 
+        msallowfullscreen="msallowfullscreen" 
+        oallowfullscreen="oallowfullscreen" 
+        webkitallowfullscreen="webkitallowfullscreen"
+                onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:350px;width:100%;border:none;overflow:hidden;"
+                ></iframe>
+
         </div>
 </div>

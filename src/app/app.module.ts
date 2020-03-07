@@ -20,6 +20,8 @@ import {TruncatePipePipe} from './truncate-pipe.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import { PlayVideoComponent } from './play-video/play-video.component';
 import { SafePipe } from './safe.pipe';
@@ -65,7 +67,8 @@ import { SpeechComponent } from './speech/speech.component';
     MatProgressSpinnerModule,
     MatGridListModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
     
   ],
   entryComponents: [PlayVideoComponent],
