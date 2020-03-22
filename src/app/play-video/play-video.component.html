@@ -18,7 +18,7 @@
         msallowfullscreen="msallowfullscreen" 
         oallowfullscreen="oallowfullscreen" 
         webkitallowfullscreen="webkitallowfullscreen"
-                onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:350px;width:100%;border:none;overflow:hidden;"
+                onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' [ngStyle]="styleOne?{'min-height':'350px','width':'100%','border':'none','overflow':'hidden'}:{'height':'400px','width':'700px'}"
                 ></iframe>
 
         </div>

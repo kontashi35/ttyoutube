@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DeviceDetectorService } from 'ngx-device-detector';
 export interface DialogData {
   animal: string;
   name: string;
@@ -15,11 +16,12 @@ export class PlayVideoComponent implements OnInit,OnDestroy {
   }
   animal: string;
   name: string;
+  styleOne:any;
 
 
   constructor(
     public dialogRef: MatDialogRef<PlayVideoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,private deviceService: DeviceDetectorService) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -34,6 +36,12 @@ export class PlayVideoComponent implements OnInit,OnDestroy {
 
 
   ngOnInit(): void {
+    if(this.deviceService.isMobile() || this.deviceService.isTablet()){
+      this.styleOne=true;
+
+    }else{
+      this.styleOne=false;
+    }
 
   }
    resizeIFrameToFitContent( iFrame ) {

@@ -1,7 +1,7 @@
 <div class="container">
   <form [formGroup]="searchForm">
     <mat-form-field>
-      <input formControlName="search" id="search" matInput placeholder="Search Drama">
+      <input formControlName="search" id="search" matInput placeholder="Search Drama" [(ngModel)]="searchTerm" (change)="searchVideo()">
     </mat-form-field>
   </form>
 </div>

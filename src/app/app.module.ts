@@ -28,6 +28,9 @@ import { SafePipe } from './safe.pipe';
 import { SongComponent } from './song/song.component';
 import { DramaComponent } from './drama/drama.component';
 import { SpeechComponent } from './speech/speech.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { DeviceDetectorModule } from 'ngx-device-detector';
+import { environment } from '../environments/environment';
 
 
 
@@ -68,7 +71,9 @@ import { SpeechComponent } from './speech/speech.component';
     MatGridListModule,
     MatDialogModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    DeviceDetectorModule.forRoot()
     
   ],
   entryComponents: [PlayVideoComponent],

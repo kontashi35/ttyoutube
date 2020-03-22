@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { PlayVideoComponent } from '../play-video/play-video.component';
 import { API_URL, API_KEY } from 'src/Constant';
+import { YoutubeService } from '../youtube.service';
 
 @Component({
   selector: 'app-drama',
@@ -16,8 +17,9 @@ export class DramaComponent implements OnInit {
 
   searchForm: FormGroup;
   results: Observable<{}>;
+  searchTerm: string;
 
-  constructor(private formBuilder: FormBuilder, private http: Http, public dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder, private http: Http, public dialog: MatDialog,private youtubeService:YoutubeService) {
     this.searchForm = this.formBuilder.group({
       search: ['', Validators.required],
     });
@@ -27,11 +29,18 @@ export class DramaComponent implements OnInit {
       distinctUntilChanged(),
       switchMap(searchTerm =>
         this.http.get(
-          `${API_URL}?q=${searchTerm} tibetan drama&key=${API_KEY}&maxResults=29&part=snippet&type=video`
+          `${API_URL}?q=${searchTerm}+%22tibetan+drama%22&key=${API_KEY}&maxResults=29&part=snippet&type=video`
         )
       ),
       map(res => res.json().items)
     );
+  }
+  ngOnInit(): void {
+    this.results = this.youtubeService.getDefaultSong("tibetan drama");
+
+  }
+  searchVideo() {
+    this.results = this.youtubeService.getDefaultSong(this.searchTerm + " tibetan drama");
   }
   onClick(header:string, key:string): void {
     const dialogRef = this.dialog.open(PlayVideoComponent, {
@@ -43,8 +52,6 @@ export class DramaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-  }
-  ngOnInit(): void {
   }
 
 }
